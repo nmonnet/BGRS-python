@@ -48,9 +48,6 @@ To function, the method requires two functions: ML_r(Y|X) and ML_u(Y|X)
     β ~ K x N
     ε ~ T x N
 
-    Note that the function ML_r(Y|X) is used with different combination of factors and returns to input as Y and X.
-    Therefore, we made a quick summary in the function ML_unrestricted to help.
-
 
     comparison with notation (in the code) and BarillasShanken2018 eq. 9:
     
