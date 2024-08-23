@@ -66,9 +66,6 @@ To function, the method requires two functions: ML_r(Y|X) and ML_u(Y|X)
 
 ## The 3 BGRS methods
 
-
-
-
   
 
   Note that the function ML_u(Y|X) is used with different combination of factors and returns to input as Y and X.
@@ -126,30 +123,6 @@ To function, the method requires two functions: ML_r(Y|X) and ML_u(Y|X)
       now you can compare the probability associated to each models (to each combination of included/excluded subsets of factors) and
       decide which one is better to use as pricing factors.
 
-
-
-
-  comparison with notation (in the code) and BarillasShanken2018 eq. 9:
-  
-  |F'F| = |X'X|
-  with X'X : shape = (K x K)
-  note that X MUST contains the market factor.
-  
-  |S| = |ε'ε|
-  with ε'ε ~ (N x N)
-
-  Q is constructed with the GRS score based on the regression Yt = α + Xt β + εt
-
-
-  Parameters:
-      Y (np.ndarray)                 : factors on the LHS
-      X (np.ndarray)                 : factors on the RHS 
-      Mkt (np.ndarray)               : Market excess return Mkt-Rf, T x 1
-      prior_multiple (float)         : scalar use to define k from Sh_mkt (BarillasShanken2018 eq. 7)
-
-  Returns:
-      float: Marginal log-likelihood of the unrestricted linear regression model.
-  """
 
 
 
