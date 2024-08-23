@@ -8,31 +8,31 @@ To function, the method requires two functions: ML_r(Y|X) and ML_u(Y|X)
 
 ### ML_u(Y|X)
 
-  Calculate the marginal likelihoods of the unrestricted linear regression model in BarillasShanken2018 eq. 9:
-  Yt = α + Xt β + εt (non restricted)
-
-  Yt : shape = (T x N)
-
-  Xt : shape = (T x K)
-
-
-  
-  α ~ 1 x N
-  β ~ K x N
-  ε ~ T x N
-
-
-
-  comparison with notation (in the code) and BarillasShanken2018 eq. 9:
-  
-  |F'F| = |X'X|
-  with X'X : shape = (K x K)
-  note that X MUST contains the market factor.
-  
-  |S| = |ε'ε|
-  with ε'ε ~ (N x N)
-
-  Q is constructed with the GRS score based on the regression Yt = α + Xt β + εt
+      Calculate the marginal likelihoods of the unrestricted linear regression model in BarillasShanken2018 eq. 9:
+      Yt = α + Xt β + εt (non restricted)
+      
+      Yt : shape = (T x N)
+      
+      Xt : shape = (T x K)
+      
+      
+      
+      α ~ 1 x N
+      β ~ K x N
+      ε ~ T x N
+      
+      
+      
+      comparison with notation (in the code) and BarillasShanken2018 eq. 9:
+      
+      |F'F| = |X'X|
+      with X'X : shape = (K x K)
+      note that X MUST contains the market factor.
+      
+      |S| = |ε'ε|
+      with ε'ε ~ (N x N)
+      
+      Q is constructed with the GRS score based on the regression Yt = α + Xt β + εt
 
 ### ML_r(Y|X)
 
