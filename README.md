@@ -4,7 +4,9 @@ This code implements the asset pricing method described in Barillas, F., Shanken
 
 ## Description
 
-# ML_u(Y|X)
+To function, the method requires two functions: ML_r(Y|X) and ML_u(Y|X)
+
+### ML_u(Y|X)
 
   Calculate the marginal likelihoods of the unrestricted linear regression model in BarillasShanken2018 eq. 9:
   Yt = α + Xt β + εt (non restricted)
@@ -18,6 +20,56 @@ This code implements the asset pricing method described in Barillas, F., Shanken
   α ~ 1 x N
   β ~ K x N
   ε ~ T x N
+
+
+
+  comparison with notation (in the code) and BarillasShanken2018 eq. 9:
+  
+  |F'F| = |X'X|
+  with X'X : shape = (K x K)
+  note that X MUST contains the market factor.
+  
+  |S| = |ε'ε|
+  with ε'ε ~ (N x N)
+
+  Q is constructed with the GRS score based on the regression Yt = α + Xt β + εt
+
+### ML_r(Y|X)
+
+    Calculate the marginal likelihoods of the restricted linear regression model in BarillasShanken2018 eq. 9:
+    Yt = Xt β + εt (restricted)
+
+    Yt : shape = (T x N)
+
+    Xt : shape = (T x K)
+
+
+    
+    β ~ K x N
+    ε ~ T x N
+
+    Note that the function ML_r(Y|X) is used with different combination of factors and returns to input as Y and X.
+    Therefore, we made a quick summary in the function ML_unrestricted to help.
+
+
+    comparison with notation (in the code) and BarillasShanken2018 eq. 9:
+    
+    |F'F| = |X'X|
+    with X'X : shape = (K x K)
+    note that X MUST contains the market factor.
+
+    |SR| = |ε'ε|
+    with ε'ε ~ (N x N)
+
+   
+
+
+## The 3 BGRS methods
+
+
+
+
+  
 
   Note that the function ML_u(Y|X) is used with different combination of factors and returns to input as Y and X.
   Therefore, we make a quick summary of what happens for 3 alternatives in the paper:
@@ -103,37 +155,3 @@ This code implements the asset pricing method described in Barillas, F., Shanken
 
 
 
-     """
-    Calculate the marginal likelihoods of the restricted linear regression model in BarillasShanken2018 eq. 9:
-    Yt = Xt β + εt (restricted)
-
-    Yt : shape = (T x N)
-
-    Xt : shape = (T x K)
-
-
-    
-    β ~ K x N
-    ε ~ T x N
-
-    Note that the function ML_r(Y|X) is used with different combination of factors and returns to input as Y and X.
-    Therefore, we made a quick summary in the function ML_unrestricted to help.
-
-
-    comparison with notation (in the code) and BarillasShanken2018 eq. 9:
-    
-    |F'F| = |X'X|
-    with X'X : shape = (K x K)
-    note that X MUST contains the market factor.
-
-    |SR| = |ε'ε|
-    with ε'ε ~ (N x N)
-
-    Parameters:
-        Y (np.ndarray)                 : factors on the LHS
-        X (np.ndarray)                 : factors on the RHS 
-        prior_multiple (float)         : scalar use to define k from Sh_mkt (BarillasShanken2018 eq. 7)
-
-    Returns:
-        float: Marginal log-likelihood of the restricted linear regression model.
-    """
